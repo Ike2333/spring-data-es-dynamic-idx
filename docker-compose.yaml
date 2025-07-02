@@ -1,0 +1,29 @@
+networks:
+  1panel-network:
+    driver: bridge
+
+volumes:
+  es_data:
+    driver: local
+
+services:
+  elasticsearch:
+    image: bitnami/elasticsearch:9.0.2
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - es_data:/bitnami/elasticsearch/data
+    networks:
+      - 1panel-network
+    restart: unless-stopped
+
+  kibana:
+    image: bitnami/kibana:9.0.2
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    networks:
+      - 1panel-network
+    restart: unless-stopped
