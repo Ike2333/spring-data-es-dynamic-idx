@@ -1,0 +1,11 @@
+{
+  "analysis": {
+    "analyzer": {
+      "icu_analyzer": {
+        "type": "custom",
+        "tokenizer": "icu_tokenizer",
+        "filter": ["lowercase", "icu_normalizer"]
+      }
+    }
+  }
+}
